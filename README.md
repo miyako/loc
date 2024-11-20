@@ -27,8 +27,12 @@
 
 <img src="https://github.com/user-attachments/assets/5cd9f418-9bfd-43d7-8a3f-765e002f5fb2" width=600 height=auto />
 
-* on Mac the final line is not counted if it doesn't have a line terminator character.  
-* on Windows the all files in a directory and its subdirectories are evidently concatenated. when a file does not end with a line terminator, the first line of the next file is added to its end, which results in a lower total line count. 
+### remarks
+
+the last line of a `.4dm` typically doesn't end with `\n` or `\r\n`. this has an impact on how lines are counted on each platform.
+
+* on Mac the final line is excluded regardless of its content.  
+* on Windows, the final line is excluded except for the last file in a directory. this is because all files in a directory and its subdirectories are evidently concatenated, which means the first line of a file is added to the last line of the previous file in sequence.
 
 ```
 TEST_form.4dm:1://%attributes = {}
