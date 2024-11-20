@@ -35,6 +35,16 @@ Function _parse() : Collection
 			
 		: (Is Windows:C1573)
 			
+			While (Match regex:C1019("(?m)(?:.+)(?:>findstr \\/r\\/n\\/s)\\s+(?:\"\\^\")(.*)(?:\\s\\|\\s*)(?:find \\/c \":\"\\s*)(^\\d+)"; $response; $i; $pos; $len))
+				$i:=$pos{0}+$len{0}
+				$path:=Substring:C12($response; $pos{1}; $len{1})
+				$count:=Num:C11(Substring:C12($response; $pos{2}; $len{2}))
+				If (Match regex:C1019("\\s*\"(.+)\\\\\\*\\.4dm\"\\s*"; $path; 1; $pos; $len))
+					$path:=Substring:C12($path; $pos{1}; $len{1})
+				End if 
+				$data.push({path: $path; count: $count})
+			End while 
+			
 	End case 
 	
 	This:C1470.data:=$data
@@ -51,10 +61,12 @@ Function count() : cs:C1710.loc
 				
 			: (Is Windows:C1573)
 				
+				$command:="cmd.exe /c for /d %d in (*) do findstr /r/n/s \"^\" \"%d\\*.4dm\" | find /c \":\""
+				
 		End case 
 		
 		This:C1470.controller.execute($command)
-		This:C1470.worker.postMessage($message)
+		//This.worker.postMessage($message)
 		This:C1470.worker.closeInput()
 		
 		If (OB Instance of:C1731(This:C1470.controller; cs:C1710._loc_Controller))
