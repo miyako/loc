@@ -65,9 +65,15 @@ Function count() : cs:C1710.loc
 				
 		End case 
 		
-		This:C1470.controller.execute($command)
-		//This.worker.postMessage($message)
-		This:C1470.worker.closeInput()
+		
+		Case of 
+			: (Is macOS:C1572)
+				This:C1470.controller.execute($command)
+				This:C1470.worker.postMessage($message)
+				This:C1470.worker.closeInput()
+			: (Is Windows:C1573)
+				This:C1470.controller.execute($command)
+		End case 
 		
 		If (OB Instance of:C1731(This:C1470.controller; cs:C1710._loc_Controller))
 			This:C1470.worker.wait()
