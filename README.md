@@ -32,7 +32,7 @@
 the last line of a `.4dm` typically doesn't end with `\n` or `\r\n`. this has an impact on how lines are counted on each platform.
 
 * on Mac the final line is excluded regardless of its content.  
-* on Windows, the final line is excluded except for the last file in a directory. this is because all files in a directory and its subdirectories are evidently concatenated during processing, which means the first line of a file is added to the last line of the previous file in sequence.
+* on Windows, the final line is excluded except for the last file in a directory. this is because all files in a directory and its subdirectories are evidently concatenated before processing, which means the first line of a file is added to the last line of the previous file in sequence.
 
 ```
 TEST_form.4dm:1://%attributes = {}
