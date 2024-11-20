@@ -1,4 +1,4 @@
-Class extends _curl_Controller
+Class extends _loc_Controller
 
 Class constructor($CLI : cs:C1710._CLI)
 	
@@ -7,21 +7,22 @@ Class constructor($CLI : cs:C1710._CLI)
 Function onData($worker : 4D:C1709.SystemWorker; $params : Object)
 	
 	If (Form:C1466#Null:C1517)
-		
+		Form:C1466.stdOut+=$params.data
 	End if 
 	
 Function onDataError($worker : 4D:C1709.SystemWorker; $params : Object)
 	
-	Super:C1706.onDataError($worker; $params)
-	
 	If (Form:C1466#Null:C1517)
-		Form:C1466.percentage:=This:C1470.percentage
+		Form:C1466.stdErr+=$params.data
 	End if 
 	
 Function onResponse($worker : 4D:C1709.SystemWorker; $params : Object)
 	
+	Super:C1706.onResponse($worker; $params)
+	
 	If (Form:C1466#Null:C1517)
-		
+		$data:=This:C1470.instance.data
+		ALERT:C41([JSON Stringify:C1217($data; *); "-"*36; $data.sum("count")].join("\r"))
 	End if 
 	
 Function onError($worker : 4D:C1709.SystemWorker; $params : Object)

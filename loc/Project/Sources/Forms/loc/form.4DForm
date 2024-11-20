@@ -26,7 +26,7 @@
 				"TEST": {
 					"type": "button",
 					"text": "TEST",
-					"top": 46,
+					"top": 396,
 					"left": 18,
 					"width": 90,
 					"height": 21,
@@ -35,32 +35,13 @@
 					],
 					"method": "ObjectMethods/TEST.4dm",
 					"imageHugsTitle": false,
-					"focusable": false
-				},
-				"percentage": {
-					"type": "progress",
-					"left": 80,
-					"top": 10,
-					"width": 300,
-					"height": 16,
-					"max": 100,
-					"dataSource": "Form:C1466.percentage",
-					"dataSourceTypeHint": "number",
-					"continuousExecution": false
-				},
-				"Text": {
-					"type": "text",
-					"text": "progress:",
-					"top": 10,
-					"left": 10,
-					"width": 66,
-					"height": 16,
-					"textAlign": "right"
+					"focusable": false,
+					"sizingY": "move"
 				},
 				"STOP": {
 					"type": "button",
 					"text": "STOP",
-					"top": 46,
+					"top": 396,
 					"left": 118,
 					"width": 90,
 					"height": 21,
@@ -69,12 +50,13 @@
 					],
 					"method": "ObjectMethods/STOP.4dm",
 					"imageHugsTitle": false,
-					"focusable": false
+					"focusable": false,
+					"sizingY": "move"
 				},
 				"CLOSE": {
 					"type": "button",
 					"text": "CLOSE",
-					"top": 46,
+					"top": 396,
 					"left": 290,
 					"width": 90,
 					"height": 21,
@@ -83,12 +65,30 @@
 					],
 					"imageHugsTitle": false,
 					"focusable": false,
-					"action": "cancel"
+					"action": "cancel",
+					"sizingY": "move",
+					"sizingX": "move"
+				},
+				"stdOut": {
+					"type": "input",
+					"left": 18,
+					"top": 20,
+					"width": 362,
+					"height": 361,
+					"enterable": false,
+					"contextMenu": "automatic",
+					"fill": "transparent",
+					"dataSource": "Form:C1466.stdOut",
+					"scrollbarVertical": "visible",
+					"dropping": "none",
+					"dragging": "none",
+					"sizingX": "grow",
+					"sizingY": "grow"
 				}
 			}
 		}
 	],
-	"geometryStamp": 49,
+	"geometryStamp": 136,
 	"method": "method.4dm",
 	"editor": {
 		"activeView": "View 1",
