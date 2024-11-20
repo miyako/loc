@@ -9,4 +9,5 @@
 
 <img src="https://github.com/user-attachments/assets/5cd9f418-9bfd-43d7-8a3f-765e002f5fb2" width=600 height=auto />
 
-**note**: on Mac the final line is not counted if it doesn't have a line terminator character.
+* on Mac the final line is not counted if it doesn't have a line terminator character.  
+* on Windows the count by recursive call doesn't match the count total of individual files.
