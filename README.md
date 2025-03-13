@@ -13,7 +13,7 @@
 	"dependencies": {
 		"loc": {
 			"github": "miyako/loc",
-			"version": "*"
+			"version": "latest"
 		}
 	}
 }
