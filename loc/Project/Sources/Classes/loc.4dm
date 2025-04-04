@@ -6,7 +6,7 @@ Class constructor($currentDirectory : 4D:C1709.Folder; $controller : 4D:C1709.Cl
 	
 Function get worker() : 4D:C1709.SystemWorker
 	
-	return This:C1470._controller.worker
+	return This:C1470.controller.worker
 	
 Function terminate()
 	
