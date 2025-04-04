@@ -7,7 +7,7 @@
   ],
   "license": "MIT",
   "repository": "https://github.com/miyako/loc",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "tool": {
     "platform": "macos",
     "branch": "20.x",
