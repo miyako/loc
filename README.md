@@ -19,13 +19,37 @@
 }
 ```
 
+## [boyter/scc](https://github.com/boyter/scc)
+
+```4d
+var $folder : 4D.Folder
+$folder:=Folder("/SOURCES/")
+
+var $scc : cs.scc
+$data:=cs.scc.new($folder).count().data
+
+ALERT(JSON Stringify($data; *))
+```
+
+<img src="https://github.com/user-attachments/assets/f0bdbcfd-8daa-490d-bfbc-b176eddae3c6 width=400 height=auto />
+
+CLI options are
+
+```
+ --count-as 4dm:pascal,4dsettings:xml,4dcatalog:xml,4dform:json
+ --format csv
+--uloc
+```
+
+# Native Commands
+
 ## macOS (`wc -l`)
 
-<img src="https://github.com/user-attachments/assets/10c42ee4-4ca2-4874-952c-d329f8c04cd9" width=600 height=auto />
+<img src="https://github.com/user-attachments/assets/10c42ee4-4ca2-4874-952c-d329f8c04cd9" width=400 height=auto />
 
 ## Windows (`findstr /r/n/s "^"` + `find /c ":"`)
 
-<img src="https://github.com/user-attachments/assets/5cd9f418-9bfd-43d7-8a3f-765e002f5fb2" width=600 height=auto />
+<img src="https://github.com/user-attachments/assets/5cd9f418-9bfd-43d7-8a3f-765e002f5fb2" width=400 height=auto />
 
 ### remarks
 
