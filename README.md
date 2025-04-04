@@ -41,7 +41,7 @@ CLI options are
  --uloc
 ```
 
-## Native Commands
+## Native Option
 
 ```4d
 var $folder : 4D.Folder
