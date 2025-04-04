@@ -41,13 +41,23 @@ CLI options are
  --uloc
 ```
 
-# Native Commands
+## Native Commands
 
-## macOS (`wc -l`)
+```4d
+var $folder : 4D.Folder
+$folder:=Folder("/SOURCES/")
+
+var $loc : cs.loc.loc
+$data:=cs.loc.loc.new($folder).count().data
+
+ALERT([JSON Stringify($data; *); "-"*36; $data.sum("count")].join("\r"))
+```
+
+### macOS (`wc -l`)
 
 <img src="https://github.com/user-attachments/assets/10c42ee4-4ca2-4874-952c-d329f8c04cd9" width=400 height=auto />
 
-## Windows (`findstr /r/n/s "^"` + `find /c ":"`)
+### Windows (`findstr /r/n/s "^"` + `find /c ":"`)
 
 <img src="https://github.com/user-attachments/assets/5cd9f418-9bfd-43d7-8a3f-765e002f5fb2" width=400 height=auto />
 
