@@ -31,7 +31,7 @@ $data:=cs.scc.new($folder).count().data
 ALERT(JSON Stringify($data; *))
 ```
 
-<img src="https://github.com/user-attachments/assets/f0bdbcfd-8daa-490d-bfbc-b176eddae3c6 width=400 height=auto />
+<img src="https://github.com/user-attachments/assets/f0bdbcfd-8daa-490d-bfbc-b176eddae3c6" width=400 height=auto />
 
 CLI options are
 
