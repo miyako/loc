@@ -1,0 +1,4 @@
+languages:
+  Pascal:
+	extensions:
+	  - ".4dm"
