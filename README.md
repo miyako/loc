@@ -25,8 +25,8 @@
 var $folder : 4D.Folder
 $folder:=Folder("/SOURCES/")
 
-var $scc : cs.scc
-$data:=cs.scc.new($folder).count().data
+var $scc : cs.loc.scc
+$data:=cs.loc.scc.new($folder).count().data
 
 ALERT(JSON Stringify($data; *))
 ```
