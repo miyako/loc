@@ -38,7 +38,7 @@ CLI options are
 ```
  --count-as 4dm:pascal,4dsettings:xml,4dcatalog:xml,4dform:json
  --format csv
---uloc
+ --uloc
 ```
 
 # Native Commands
