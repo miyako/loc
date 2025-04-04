@@ -4,7 +4,7 @@ Class extends _CLI
 
 Class constructor($currentDirectory : 4D:C1709.Folder; $controller : 4D:C1709.Class)
 	
-	Super:C1705($currentDirectory; $controller)
+	Super:C1705(""; $currentDirectory; $controller)
 	
 Function get worker() : 4D:C1709.SystemWorker
 	

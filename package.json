@@ -2,11 +2,12 @@
   "name": "loc",
   "description": "loc",
   "author": [
+    "Ben Boyter",
     "Keisuke Miyako <keisuke.miyako@4D.com>"
   ],
   "license": "MIT",
   "repository": "https://github.com/miyako/loc",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "tool": {
     "platform": "macos",
     "branch": "20.x",

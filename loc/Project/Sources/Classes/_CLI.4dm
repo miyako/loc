@@ -1,17 +1,42 @@
-Class constructor($currentDirectory : 4D:C1709.Folder; $controller : 4D:C1709.Class)
+Class constructor($executableName : Text; $currentDirectory : 4D:C1709.Folder; $controller : 4D:C1709.Class)
 	
 	This:C1470._name:=OB Class:C1730(This:C1470).name
 	
 	Case of 
 		: (Is macOS:C1572)
 			This:C1470._platform:="macOS"
+			This:C1470._executableName:=$executableName#"" ? $executableName : Null:C1517
 			This:C1470._EOL:="\n"
 		: (Is Windows:C1573)
 			This:C1470._platform:="Windows"
+			This:C1470._executableName:=$executableName#"" ? $executableName+".exe" : Null:C1517
 			This:C1470._EOL:="\r\n"
 	End case 
 	
 	This:C1470._currentDirectory:=This:C1470.expand($currentDirectory)
+	
+	If (This:C1470._executableName#Null:C1517)
+		This:C1470._executableFile:=File:C1566(This:C1470.expand(Folder:C1567("/RESOURCES/bin").folder(This:C1470.platform).file(This:C1470.executableName)).path)
+		If (This:C1470._executableFile.exists)
+			
+			//the executable is in /RESOURCES/bin/{platform}
+			
+			Case of 
+				: (Is macOS:C1572)
+					This:C1470._executablePath:=This:C1470._executableFile.path
+				: (Is Windows:C1573)
+					This:C1470._executablePath:=This:C1470._executableFile.platformPath
+			End case 
+			
+			This:C1470._chmod()
+			
+		Else 
+			
+			//the executable is not in /RESOURCES/bin/{platform} depend on $PATH
+			
+			This:C1470._executablePath:=This:C1470.executableName
+		End if 
+	End if 
 	
 	If ($controller=Null:C1517)
 		This:C1470._controller:=cs:C1710._loc_Controller.new(This:C1470)  //default controller
@@ -27,6 +52,10 @@ Function get EOL()->$EOL : Text
 	
 	$EOL:=This:C1470._EOL
 	
+Function get executableName()->$executableName : Text
+	
+	$executableName:=This:C1470._executableName
+	
 Function get platform()->$platform : Text
 	
 	$platform:=This:C1470._platform
@@ -34,6 +63,14 @@ Function get platform()->$platform : Text
 Function get currentDirectory()->$currentDirectory : 4D:C1709.Folder
 	
 	$currentDirectory:=This:C1470._currentDirectory
+	
+Function get executablePath()->$executablePath : Text
+	
+	$executablePath:=This:C1470._executablePath
+	
+Function get executableFile()->$executableFile : 4D:C1709.File
+	
+	$executableFile:=This:C1470._executableFile
 	
 Function get controller()->$controller : cs:C1710._CLI_Controller
 	
@@ -99,3 +136,14 @@ Function quote($in : Text)->$out : Text
 	
 	$out:="\""+$in+"\""
 	
+	//MARK:-private methods
+	
+Function _chmod()
+	
+	If (Is macOS:C1572)
+		//If (Application type=4D Remote mode)
+		SET ENVIRONMENT VARIABLE:C812("_4D_OPTION_CURRENT_DIRECTORY"; This:C1470.currentDirectory.platformPath)
+		SET ENVIRONMENT VARIABLE:C812("_4D_OPTION_BLOCKING_EXTERNAL_PROCESS"; "true")
+		LAUNCH EXTERNAL PROCESS:C811("chmod +x "+This:C1470.executableName)
+		//End if 
+	End if 
