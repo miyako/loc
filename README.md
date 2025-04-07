@@ -36,7 +36,7 @@ ALERT(JSON Stringify($data; *))
 CLI options are
 
 ```
- --count-as 4dm:pascal,4dsettings:xml,4dcatalog:xml,4dform:json
+ --count-as 4dm:js,4qs:js,4dsettings:xml,4dcatalog:xml,4dform:json
  --format csv
  --uloc
 ```
