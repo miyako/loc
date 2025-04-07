@@ -36,9 +36,12 @@ Function _parse() : Collection
 			For each ($header; $headers)
 				If ($header="Language")
 					$datum[$header]:=$values.shift()
-					If ($datum.Language="Pascal")
-						$datum.Language:="4D"
-					End if 
+					Case of 
+						: ($datum.Language="JavaScript")
+							$datum.Language:="4D"
+						: ($datum.Language="Pascal")
+							$datum.Language:="4D"
+					End case 
 				Else 
 					$datum[$header]:=Num:C11($values.shift())
 				End if 
@@ -51,7 +54,7 @@ Function _parse() : Collection
 Function count() : cs:C1710.loc
 	
 	$command:=This:C1470.escape(This:C1470.executablePath)
-	$command+=" --count-as 4dm:pascal,4dsettings:xml,4dcatalog:xml,4dform:json"
+	$command+=" --count-as 4dm:js,4qs:js,4dsettings:xml,4dcatalog:xml,4dform:json"
 	$command+=" --format csv"  //file counts missing in json output
 	$command+=" "+This:C1470.quote(This:C1470.currentDirectory.path)
 	
