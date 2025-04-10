@@ -56,6 +56,7 @@ Function count() : cs:C1710.loc
 	$command:=This:C1470.escape(This:C1470.executablePath)
 	$command+=" --count-as 4dm:js,4qs:js,4dsettings:xml,4dcatalog:xml,4dform:json"
 	$command+=" --format csv"  //file counts missing in json output
+	$command+=" --uloc"
 	$command+=" "+This:C1470.quote(This:C1470.currentDirectory.path)
 	
 	If (This:C1470.currentDirectory#Null:C1517) && (This:C1470.currentDirectory.exists)
